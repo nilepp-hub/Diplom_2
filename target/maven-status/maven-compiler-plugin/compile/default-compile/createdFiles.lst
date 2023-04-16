@@ -1,0 +1,7 @@
+ru\yandex\practikum\model\order\Order.class
+ru\yandex\practikum\model\testdata\UserTestData.class
+ru\yandex\practikum\config\Config.class
+ru\yandex\practikum\model\user\UserClient.class
+ru\yandex\practikum\model\order\OrderStatus.class
+ru\yandex\practikum\model\user\UserLogin.class
+ru\yandex\practikum\model\user\User.class

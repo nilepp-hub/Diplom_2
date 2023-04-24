@@ -13,11 +13,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class UserRegTests {
-    User user;
-    UserClient userClient;
-    boolean isDel;
-    String accessToken;
-    boolean isReg;
+    private User user;
+    private UserClient userClient;
+    private boolean isDel;
+    private String accessToken;
+    private boolean isReg;
 
     @Before
     public void start() {
@@ -28,7 +28,8 @@ public class UserRegTests {
     @Test
     @DisplayName("Reg random user ")
     public void regRndUserTest() {
-        isReg = userClient.create(user)
+        isReg = userClient
+                .create(user)
                 .statusCode(SC_OK)
                 .extract()
                 .path("success");
@@ -64,7 +65,8 @@ public class UserRegTests {
     @DisplayName("Reg user without a name")
     public void regUserNotNameTest() {
         user.setName("");
-        String error = userClient.create(user)
+        String error = userClient
+                .create(user)
                 .statusCode(SC_FORBIDDEN)
                 .extract()
                 .path("message");
@@ -79,7 +81,8 @@ public class UserRegTests {
     @DisplayName("Reg user without a pass")
     public void regUserNotPassTest() {
         user.setPassword("");
-        String error = userClient.create(user)
+        String error = userClient
+                .create(user)
                 .statusCode(SC_FORBIDDEN)
                 .extract()
                 .path("message");
@@ -89,16 +92,19 @@ public class UserRegTests {
                 .extract()
                 .path("accessToken");
     }
+
     @Test
     @DisplayName("Reg user without a email")
     public void regUserNotEmailTest() {
         user.setEmail("");
-        String error = userClient.create(user)
+        String error = userClient
+                .create(user)
                 .statusCode(SC_FORBIDDEN)
                 .extract()
                 .path("message");
         assertEquals("Email, password and name are required fields", error);
-        accessToken = userClient.login(UserLogin.getLogin(user))
+        accessToken = userClient
+                .login(UserLogin.getLogin(user))
                 .extract()
                 .path("accessToken");
     }
@@ -106,7 +112,8 @@ public class UserRegTests {
     @After
     public void finish() {
         if (accessToken != null) {
-            isDel = userClient.delete(accessToken)
+            isDel = userClient
+                    .delete(accessToken)
                     .statusCode(SC_ACCEPTED)
                     .extract()
                     .path("success");

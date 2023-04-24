@@ -14,11 +14,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class UserChangeTests {
-    User user;
-    UserClient userClient;
-    String accessToken;
-    String noToken = "";
-    boolean isReg;
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
+    private String noToken = "";
+    private boolean isReg;
 
     @Before
     public void start() {
@@ -34,7 +34,6 @@ public class UserChangeTests {
                 .statusCode(SC_OK)
                 .extract()
                 .path("accessToken");
-
     }
 
     @Test
@@ -53,7 +52,8 @@ public class UserChangeTests {
     @DisplayName("Reg and password change")
     public void regChangePasswordTest() {
         user.setPassword(UserTestData.rndPassword());
-        boolean isTrue = userClient.change(accessToken, user)
+        boolean isTrue = userClient
+                .change(accessToken, user)
                 .statusCode(SC_OK)
                 .extract()
                 .path("success");
@@ -64,7 +64,8 @@ public class UserChangeTests {
     @DisplayName("Reg and name change")
     public void regChangeNameTest() {
         user.setName(UserTestData.rndName());
-        boolean isTrue = userClient.change(accessToken, user)
+        boolean isTrue = userClient
+                .change(accessToken, user)
                 .statusCode(SC_OK)
                 .extract()
                 .path("success");
@@ -87,7 +88,8 @@ public class UserChangeTests {
     @DisplayName("No Reg and password change")
     public void noRegChangePasswordTest() {
         user.setPassword(UserTestData.rndPassword());
-        String error = userClient.change(noToken, user)
+        String error = userClient
+                .change(noToken, user)
                 .statusCode(SC_UNAUTHORIZED)
                 .extract()
                 .path("message");
@@ -98,7 +100,8 @@ public class UserChangeTests {
     @DisplayName("No Reg and name change")
     public void noRegChangeNameTest() {
         user.setName(UserTestData.rndName());
-        String error = userClient.change(noToken, user)
+        String error = userClient
+                .change(noToken, user)
                 .statusCode(SC_UNAUTHORIZED)
                 .extract()
                 .path("message");

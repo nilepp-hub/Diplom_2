@@ -15,13 +15,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class OrderRegTests {
-    Order order;
-    OrderStatus orderStatus;
-    User user;
-    UserClient userClient;
-    String accessToken;
-    boolean isReg;
-    boolean isDel;
+    private Order order;
+    private OrderStatus orderStatus;
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
+    private boolean isReg;
+    private boolean isDel;
 
     @Before
     public void start() {
@@ -34,7 +34,8 @@ public class OrderRegTests {
                 .statusCode(SC_OK)
                 .extract()
                 .path("success");
-        accessToken = userClient.login(UserLogin.getLogin(user))
+        accessToken = userClient
+                .login(UserLogin.getLogin(user))
                 .statusCode(SC_OK)
                 .extract()
                 .path("accessToken");

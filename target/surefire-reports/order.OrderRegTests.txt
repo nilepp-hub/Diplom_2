@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: order.OrderRegTests
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.229 s - in order.OrderRegTests
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.597 s - in order.OrderRegTests

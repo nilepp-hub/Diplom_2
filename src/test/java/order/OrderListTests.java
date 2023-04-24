@@ -17,14 +17,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class OrderListTests {
-    Order order;
-    OrderStatus orderStatus;
-    User user;
-    UserClient userClient;
-    boolean isDel;
-    String accessToken;
-    List<Object> actualNumber = new ArrayList<>();
-    List<Object> numberOrder = new ArrayList<>();
+    private Order order;
+    private OrderStatus orderStatus;
+    private User user;
+    private UserClient userClient;
+    private boolean isDel;
+    private String accessToken;
+    private List<Object> actualNumber = new ArrayList<>();
+    private List<Object> numberOrder = new ArrayList<>();
 
     @Before
     public void start() throws IndexOutOfBoundsException {
@@ -32,7 +32,8 @@ public class OrderListTests {
         userClient = new UserClient();
         order = Order.getOrder();
         orderStatus = new OrderStatus();
-        accessToken = userClient.create(user)
+        accessToken = userClient
+                .create(user)
                 .statusCode(SC_OK)
                 .extract()
                 .path("accessToken");
@@ -55,7 +56,8 @@ public class OrderListTests {
     @Test
     @DisplayName("Order not authorization user")
     public void getOrderNotAuthorizationUserTest() {
-        String error = orderStatus.getOrders("")
+        String error = orderStatus
+                .getOrders("")
                 .statusCode(SC_UNAUTHORIZED)
                 .extract()
                 .path("message");
@@ -64,7 +66,8 @@ public class OrderListTests {
 
     @After
     public void finish() {
-        isDel = userClient.delete(accessToken)
+        isDel = userClient
+                .delete(accessToken)
                 .statusCode(SC_ACCEPTED)
                 .extract()
                 .path("success");

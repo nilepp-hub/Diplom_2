@@ -42,4 +42,4 @@ Roadmap:
 Contact
 Niklay Lepp - https://t.me/Lihodey84 - email@example.com
 
-Project Link: https://github.com/nilepp-hub/Diplom_1
+Project Link: https://github.com/nilepp-hub/Diplom_2
